@@ -3,39 +3,56 @@ import { Grid, Paper, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import Divider from '@mui/material/Divider';
-const History=(props)=>{
+import { useState } from "react";
+
+import ModalEdit from "./ModalEdit";
+const History=({title,cost,id,color,onDelete,oneEdit})=>{
+    
+    const [isModalOpen,setIsModalOpen]=useState(false);
     return(<>
-            <Paper   sx={{marginTop:"8px",marginBottom:"12px",borderTop:`3px solid ${props.color}`}}>
+    
+            <Paper   sx={{marginTop:"8px",marginBottom:"12px",borderTop:`3px solid ${color}`}}>
             
         <Grid container justifyContent="space-around">
        
             <Grid item lg={4}>
             <Typography align="left" sx={{fontWeight:"550",marginTop:"10px",marginBottom:"10px",marginLeft:"10px"}}>
-            {props.title}
+            {title}
             </Typography></Grid>
             <Grid item lg={4}>
             
             <Typography align="right" sx={{marginTop:"10px",marginBottom:"10px"}}>
-            {props.cost}
+            {cost}
             </Typography></Grid>
             <Grid item lg={4}>
             
             <Typography align="right" sx={{marginBottom:"10px"}}>
             
             
-            <IconButton aria-label="edit">
+            <IconButton aria-label="edit" onClick={()=>setIsModalOpen(true)}>
             
   <EditIcon fontSize="small" color="primary"/></IconButton>
   
-  <IconButton aria-label="delete">
-  <DeleteIcon fontSize="small" sx={{ color: "red" }}/>
+  <IconButton aria-label="delete" onClick={()=>onDelete(id)}>
+  <DeleteIcon fontSize="small"
+  
+   sx={{ color: "red" }}/>
   </IconButton>
 
-  </Typography></Grid>
+  </Typography>
+  </Grid>
             
-        </Grid></Paper>
+        </Grid>
         
+        </Paper>
+        
+<ModalEdit isModalOpen={isModalOpen}
+title={title}
+cost={cost}
+id={id}
+color={color}
+oneEdit={oneEdit}
+ setIsModalOpen={setIsModalOpen} />
     </>)
 }
 
