@@ -1,6 +1,6 @@
 import { Paper, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid'
-const Salary=()=>{
+const Salary=(props)=>{
     return(<>
 <Paper   elevation={2} >
 <Grid container 
@@ -8,13 +8,13 @@ const Salary=()=>{
   >
  <Grid item lg={6} md={4}  >
  <Typography align="center" variant="h6">Income:</Typography>
- <Typography align="center"  variant="h5" color="green">1,045.50</Typography>
+ <Typography align="center"  variant="h5" color="green">   ₹{props.totalIncome}</Typography>
  
  </Grid> 
  <Grid item lg={6} md={4} >
  <Typography align="center" variant="h6">Expenses:</Typography>
  
- <Typography align="center" variant="h5"  color="red">623.50</Typography>
+ <Typography align="center" variant="h5"  color="red"> ₹{props.totalExpense} </Typography>
  </Grid> 
  <Grid item lg={12}>
  

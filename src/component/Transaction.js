@@ -46,7 +46,7 @@ const Transaction = (props) => {
                         onChange={(event) => props.setVal(event.target.value)}
                         val={props.val}
                         InputProps={{
-                            startAdornment: (<InputAdornment position="start">$</InputAdornment>)
+                            startAdornment: (<InputAdornment position="start"> ₹</InputAdornment>)
                         }}
 
                         fullWidth variant="outlined"></TextField>

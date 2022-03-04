@@ -43,7 +43,7 @@ export const EditTransaction = (props) => {
                         onChange={(event) => props.setTempVal(event.target.value)}
                         val={props.tempVal}
                         InputProps={{
-                            startAdornment: (<InputAdornment position="start">$</InputAdornment>)
+                            startAdornment: (<InputAdornment position="start"> ₹</InputAdornment>)
                         }}
 
                         fullWidth variant="outlined"></TextField>

@@ -7,8 +7,7 @@ import { useState } from "react";
 
 import ModalEdit from "./ModalEdit";
 const History=({title,cost,id,color,onDelete,oneEdit,setDesc,desc,setIsExpense,isExpense})=>{
-    console.log("Title Val:",title)
-    console.log("Desc Val:",desc)
+
     
     const [isModalOpen,setIsModalOpen]=useState(false);
     return(<>
@@ -25,7 +24,7 @@ const History=({title,cost,id,color,onDelete,oneEdit,setDesc,desc,setIsExpense,i
             <Grid item lg={4}>
             
             <Typography align="right" sx={{marginTop:"10px",marginBottom:"10px"}}>
-            {cost}
+             ₹{cost}
             </Typography></Grid>
             <Grid item lg={4}>
             
