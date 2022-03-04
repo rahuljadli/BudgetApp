@@ -57,7 +57,7 @@ return totalExpense+=entry.cost;
 
   return (
     <div >
-         <Budget/>
+         <Budget budget={totalIncome-totalExpense} />
          <Salary totalExpense={totalExpense} totalIncome={totalIncome} />
          {historyVal.map(history=>{
            return <History 
