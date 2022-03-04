@@ -1,13 +1,19 @@
-import { Button, DialogActions, Modal, Paper, Typography } from '@mui/material'
+import { Modal, Paper, Typography } from '@mui/material'
 import { Box } from '@mui/system';
 import React, { useState } from 'react'
 
-import Transaction from "./Transaction";
-export const ModalEdit = ({title,cost,id,color,isModalOpen,setIsModalOpen,oneEdit}) => {
+import EditTransaction from "./EditTransaction";
+export const ModalEdit = ({desc,title,cost,id,color,isModalOpen,setIsModalOpen,oneEdit
+,isExpense}) => {
+
+  const [tempDesc,setTempDesc]=useState(desc);
+    
+    const [tempVal,setTempVal]=useState(cost);
+    
+    const [tempExpense,setTempExpense]=useState(color==="red"?true:false);
 
    const handleSave=()=>{
-     
-    oneEdit(id,title,cost,color);
+    oneEdit(id,tempDesc,tempVal,tempExpense===true?"red":"green");
     setIsModalOpen(false);
    }
   return (
@@ -32,13 +38,16 @@ export const ModalEdit = ({title,cost,id,color,isModalOpen,setIsModalOpen,oneEdi
             Edit Entry 
           </Typography>
   </Paper>
-          <Transaction  title={title} cost={cost} id={id} color={color}   />
-          <DialogActions>
-          <Button variant="contained" color="success" 
-          onClick={()=>handleSave()} >Save</Button>
-        
-          <Button variant="contained" color="inherit" onClick={()=>setIsModalOpen(false)} >Close</Button>
-        </DialogActions> </Box>
+          <EditTransaction   tempDesc={tempDesc} tempVal={tempVal} id={id}
+          
+           tempExpense={tempExpense}
+          setTempExpense={setTempExpense}
+          setTempDesc={setTempDesc}
+          setTempVal={setTempVal}
+          setIsModalOpen={setIsModalOpen}
+          handleSave={handleSave}
+           />
+           </Box>
       </Modal>
   </>)
 }

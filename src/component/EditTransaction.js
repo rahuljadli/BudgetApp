@@ -1,17 +1,14 @@
-import {  Checkbox, FormControlLabel, Grid, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import React from 'react'
+import { Button, Checkbox, FormControlLabel, Grid, IconButton, InputAdornment,
+ TextField, Typography } from "@mui/material";
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-
+import {  DialogActions} from '@mui/material'
 import { Box } from "@mui/system";
-import ButtonAction from "./ButtonAction";
-
-const Transaction = (props) => {
+export const EditTransaction = (props) => {
     
-    return (
-        <>
+   return (
+     <>
             <Grid container spacing={1}>
-                <Grid item lg={12}>
-                    <Typography variant="h5">Add new transaction</Typography>
-                </Grid>
                 <Grid item lg={8}>
                     <Typography variant="body2" sx={{ fontWeight: "550" }} align="left"
                     >Description</Typography>
@@ -23,9 +20,9 @@ const Transaction = (props) => {
                 <Grid item lg={8}>
                     <TextField size="small" label="New thing"
                         fullWidth variant="outlined"
-                        defaultValue={props.desc && props.desc}
-                        onChange={(event) => props.setDesc(event.target.value)}
-                        val={props.desc}
+                        defaultValue={props.tempDesc && props.tempDesc}
+                        onChange={(event) => props.setTempDesc(event.target.value)}
+                        val={props.tempDesc}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
@@ -42,9 +39,9 @@ const Transaction = (props) => {
                 <Grid item lg={4}>
                     <TextField size="small"
                     
-                    defaultValue={props.cost && props.cost}
-                        onChange={(event) => props.setVal(event.target.value)}
-                        val={props.val}
+                    defaultValue={props.tempVal && props.tempVal}
+                        onChange={(event) => props.setTempVal(event.target.value)}
+                        val={props.tempVal}
                         InputProps={{
                             startAdornment: (<InputAdornment position="start">$</InputAdornment>)
                         }}
@@ -59,20 +56,21 @@ const Transaction = (props) => {
                             control={<Checkbox
                                 color="success"
                                 size="medium"
-                                defaultValue={props.isExpense && props.isExpense}
-                                checked={props.isExpense}
-                                onChange={() => props.setIsExpense(!props.isExpense)} />}
+                                defaultValue={props.tempExpense}
+                                checked={props.tempExpense}
+                                onChange={() => props.setTempExpense(!props.tempExpense)} />}
                         />
                     </Box>
 
                 </Grid>
-                {props.showAction &&
-                    <ButtonAction  val={props.val}
-                setDesc={props.setDesc}
-             desc={props.desc}
-                     addTransaction={props.addTransaction} />}
+                 <DialogActions>
+          <Button variant="contained" color="success" 
+          onClick={()=>props.handleSave()} >Save</Button>
+        
+          <Button variant="contained" color="inherit" onClick={()=>props.setIsModalOpen(false)} >Close</Button>
+        </DialogActions>   
             </Grid>
         </>
-    )
+  )
 }
-export default Transaction;
+export default EditTransaction

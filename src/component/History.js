@@ -6,18 +6,21 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from "react";
 
 import ModalEdit from "./ModalEdit";
-const History=({title,cost,id,color,onDelete,oneEdit})=>{
+const History=({title,cost,id,color,onDelete,oneEdit,setDesc,desc,setIsExpense,isExpense})=>{
+    console.log("Title Val:",title)
+    console.log("Desc Val:",desc)
     
     const [isModalOpen,setIsModalOpen]=useState(false);
     return(<>
     
-            <Paper   sx={{marginTop:"8px",marginBottom:"12px",borderTop:`3px solid ${color}`}}>
+            <Paper   sx={{marginTop:"8px",marginBottom:"12px",
+            borderTop:`3px solid ${color}`}}>
             
         <Grid container justifyContent="space-around">
        
             <Grid item lg={4}>
             <Typography align="left" sx={{fontWeight:"550",marginTop:"10px",marginBottom:"10px",marginLeft:"10px"}}>
-            {title}
+            {desc}
             </Typography></Grid>
             <Grid item lg={4}>
             
@@ -47,11 +50,12 @@ const History=({title,cost,id,color,onDelete,oneEdit})=>{
         </Paper>
         
 <ModalEdit isModalOpen={isModalOpen}
-title={title}
+desc={desc}
 cost={cost}
 id={id}
 color={color}
 oneEdit={oneEdit}
+   setDesc={setDesc}
  setIsModalOpen={setIsModalOpen} />
     </>)
 }
